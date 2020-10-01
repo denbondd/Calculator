@@ -1,0 +1,42 @@
+:root {
+    --main: #ff8880;
+    --shadow: 11px 11px 22px#ed7e77, 
+        -12px -12px 24px #ff9289;
+    --clicked-shadow:   inset 12px 12px 26px #eb7d76, 
+        inset -12px -12px 26px #ff938a;
+    --bord-radius: 25px;
+}
+
+body {
+    background: var(--main);
+}
+
+.calculatorBody {
+    margin: 0 auto;
+    width: max-content;
+}
+
+.leftPart {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+}
+
+.btn {
+    font-size: xx-large;
+    width: 70px;
+    height: 70px;
+    margin: 8px;
+    background: var(--main);
+    box-shadow: var(--shadow);
+    border-radius: var(--bord-radius);
+    color: white;
+    border: 0;
+}
+
+.btn:active {
+    box-shadow: var(--clicked-shadow);
+}
