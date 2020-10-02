@@ -1,8 +1,8 @@
 :root {
     --main: #ff8880;
-    --shadow: 11px 11px 22px#ed7e77, 
-        -12px -12px 24px #ff9289;
-    --clicked-shadow:   inset 12px 12px 26px #eb7d76, 
+    --shadow:   9px 9px 18px #e87c74, 
+    -9px -9px 18px #ff948c;
+    --inner-shadow:   inset 12px 12px 26px #eb7d76, 
         inset -12px -12px 26px #ff938a;
     --bord-radius: 25px;
 }
@@ -12,8 +12,17 @@ body {
 }
 
 .calculatorBody {
-    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
     width: max-content;
+    box-shadow: var(--shadow);
+    padding: 30px;
+    border-radius: var(--bord-radius);
+
 }
 
 .leftPart {
@@ -25,11 +34,25 @@ body {
     display: flex;
 }
 
+.mainScreen {
+    background: var(--main);
+    border: 0;
+    color: white;
+    font-size: xx-large;
+    margin: 20px 6px;
+    box-shadow: var(--inner-shadow);
+    border-radius: var(--bord-radius);
+    padding: 10px;
+    width: 290px;
+    display: flex;
+    flex-direction: column;
+}
+
 .btn {
     font-size: xx-large;
     width: 70px;
     height: 70px;
-    margin: 8px;
+    margin: 6px;
     background: var(--main);
     box-shadow: var(--shadow);
     border-radius: var(--bord-radius);
@@ -38,5 +61,11 @@ body {
 }
 
 .btn:active {
-    box-shadow: var(--clicked-shadow);
+    box-shadow: var(--inner-shadow);
+}
+
+.firstInput,
+.secondInput {
+    margin: 4px 6px;
+    height: 37px;
 }
