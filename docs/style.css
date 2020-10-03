@@ -34,20 +34,6 @@ body {
     display: flex;
 }
 
-.mainScreen {
-    background: var(--main);
-    border: 0;
-    color: white;
-    font-size: xx-large;
-    margin: 20px 6px;
-    box-shadow: var(--inner-shadow);
-    border-radius: var(--bord-radius);
-    padding: 10px;
-    width: 290px;
-    display: flex;
-    flex-direction: column;
-}
-
 .btn {
     font-size: xx-large;
     width: 70px;
@@ -64,8 +50,32 @@ body {
     box-shadow: var(--inner-shadow);
 }
 
+.mainScreen {
+    background: var(--main);
+    border: 0;
+    color: white;
+    font-size: xx-large;
+    margin: 20px 6px;
+    box-shadow: var(--inner-shadow);
+    border-radius: var(--bord-radius);
+    padding: 10px;
+    width: 290px;
+    min-height: 98px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 .firstInput,
 .secondInput {
     margin: 4px 6px;
-    height: 37px;
+}
+
+.firstInput {
+    font-size: 24px;
+    min-height: 27px;
+}
+
+.secondInput {
+    font-size: 48px;
 }
