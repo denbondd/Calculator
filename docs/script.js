@@ -12,8 +12,10 @@ webElements.buttons.forEach(function (button) {
             case '-':
             case '*':
             case '/':
-                webElements.firstInput.innerHTML = ` ${webElements.secondInput.innerHTML} ${text}`
-                webElements.secondInput.innerHTML = '';
+                if (secondInputNotEmpty()) {
+                    webElements.firstInput.innerHTML = ` ${webElements.secondInput.innerHTML} ${text}`
+                    webElements.secondInput.innerHTML = '';
+                }
                 break;
             case '=':
                 equalsBtn(webElements.firstInput.innerHTML, webElements.secondInput.innerHTML);
@@ -21,6 +23,28 @@ webElements.buttons.forEach(function (button) {
             case 'C':
                 webElements.secondInput.innerHTML = '';
                 webElements.firstInput.innerHTML = '';
+                break;
+            case '⌫':
+                if (webElements.secondInput.innerHTML.length != 1) {
+                    webElements.secondInput.innerHTML = webElements.secondInput.innerHTML.slice(0, -1);
+                } else {
+                    webElements.secondInput.innerHTML = '0';
+                }
+                break;
+            case '.':
+                if (!webElements.secondInput.innerHTML.includes('.')) {
+                    webElements.secondInput.innerHTML += e.target.innerHTML;
+                }
+                break;
+            case '+/-':
+                if (secondInputNotEmpty()) {
+                    webElements.secondInput.innerHTML = `-${webElements.secondInput.innerHTML}`
+                }
+                break;
+            case '%':
+                if (secondInputNotEmpty()) {
+                    webElements.secondInput.innerHTML = webElements.secondInput.innerHTML / 100;
+                }
                 break;
             default:
                 webElements.secondInput.innerHTML += e.target.innerHTML;
@@ -32,6 +56,9 @@ webElements.buttons.forEach(function (button) {
 function equalsBtn(firstNumberAndSign, secondNumber) {
     //get number from a whole string
     let firstNumber = +firstNumberAndSign.split('').filter(a => isFinite(a) || a === '.').join('');
+    if (firstNumberAndSign[1] === '-') {
+        firstNumber *= -1;
+    }
     webElements.firstInput.innerHTML += ` ${webElements.secondInput.innerHTML} =`;
     let answ;
     if (firstNumberAndSign.includes('+')) {
@@ -49,4 +76,8 @@ function equalsBtn(firstNumberAndSign, secondNumber) {
         answ = (Math.round(answ * 100_000_000)) / 100_000_000;
     }
     webElements.secondInput.innerHTML = answ;
+}
+
+function secondInputNotEmpty() {
+    return webElements.secondInput.innerHTML !== '';
 }
