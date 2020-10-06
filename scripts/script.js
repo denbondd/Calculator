@@ -37,7 +37,7 @@ webElements.buttons.forEach(function (button) {
                 }
                 break;
             case '+/-':
-                if (secondInputNotEmpty()) {
+                if (firstInputEmpty()) {
                     webElements.secondInput.innerHTML = `-${webElements.secondInput.innerHTML}`
                 }
                 break;
@@ -47,6 +47,7 @@ webElements.buttons.forEach(function (button) {
                 }
                 break;
             default:
+                if (webElements.secondInput.innerHTML === '0') webElements.secondInput.innerHTML = '';
                 webElements.secondInput.innerHTML += e.target.innerHTML;
                 break;
         }
@@ -76,6 +77,10 @@ function equalsBtn(firstNumberAndSign, secondNumber) {
         answ = (Math.round(answ * 100_000_000)) / 100_000_000;
     }
     webElements.secondInput.innerHTML = answ;
+}
+
+function firstInputEmpty() {
+    return webElements.firstInput.innerHTML === '';
 }
 
 function secondInputNotEmpty() {
