@@ -62,14 +62,12 @@ function equalsBtn(firstNumberAndSign, secondNumber) {
     }
     webElements.firstInput.innerHTML += ` ${webElements.secondInput.innerHTML} =`;
     let answ;
-    if (firstNumberAndSign.includes('+')) {
-        answ = firstNumber + +secondNumber;
-    } else if (firstNumberAndSign.includes('-')) {
-        answ = firstNumber - secondNumber;
+    if (firstNumberAndSign.includes('/')) {
+        answ = firstNumber / secondNumber;
     } else if (firstNumberAndSign.includes('*')) {
         answ = firstNumber * secondNumber;
-    } else if (firstNumberAndSign.includes('/')) {
-        answ = firstNumber / secondNumber;
+    } else if (firstNumberAndSign.includes('-')) {
+        answ = firstNumber - secondNumber;
     } else {
         answ = firstNumber + +secondNumber;
     }
